@@ -8,6 +8,13 @@ import {
 } from "@hugeicons/core-free-icons";
 import {HugeiconsIcon} from '@hugeicons/react'
 import SearchBar from "./SearchBar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const Hero = () => {
   return (
@@ -15,15 +22,14 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row items-start gap-10 py-4">
           {/* Left Content */}
-          <div className="flex-1 space-y-5 text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-secondary tracking-tight lg:mt-14">
-              <span className="tracking-wide">BUY YOUR NEXT</span> <br />
+          <div className="flex-1 space-y-5 text-center lg:text-left font-lato">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-secondary tracking-tight lg:mt-14">
+              <span className=";g:tracking-wide">BUY YOUR NEXT</span> <br />
               PERFECT <span className="text-primary uppercase">PLACE</span>
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl font-medium max-w-lg mx-auto lg:mx-0">
+            <p className="text-muted-foreground text-base md:text-xl font-medium max-w-lg mx-auto lg:mx-0">
               More than 500+ house available for sale & rent
             </p>
-
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5">
               <Button 
                 className="bg-primary hover:bg-primary/90 text-white h-16 px-10 rounded-[7px] text-lg font-bold group transition-all shadow-lg shadow-primary/20"
@@ -64,7 +70,7 @@ const Hero = () => {
                 />
                 
                 {/* Agent Card Overlay */}
-                <div className="absolute bottom-0 right-0 w-[70%]  bg-transparent">
+                <div className="absolute bottom-0 right-0 w-[95%] lg:w-[70%]  bg-transparent">
                     <div className="relative size-full p-6 text-white rounded-tl-[60px] overflow-hidden">
                         <div className="size-full absolute top-0 left-0 bg-linear-to-r from-[#02ACF9] to-[#002D4F] blur-xs opacity-80"></div>
                         <div className="flex items-center gap-4 z-200">
@@ -79,7 +85,7 @@ const Hero = () => {
                     </div>
                 </div>
                 {/* Agent Card Overlay 2 */}
-                <div className="absolute bottom-35 right-0 w-[50%] bg-transparent animate-[float_6s_ease-in-out_infinite]">
+                <div className="absolute bottom-35 right-0 w-[90%] lg:w-[50%] bg-transparent animate-[float_6s_ease-in-out_infinite]">
                     <div className="relative size-full p-6 text-white rounded-tl-[60px] rounded-bl-[60px] overflow-hidden"> 
                         <div className="size-full absolute top-0 left-0 bg-linear-to-r from-[#02ACF9] to-[#002D4F] blur-xs opacity-80"></div>
                         <div className="flex items-center gap-4 z-200">

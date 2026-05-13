@@ -35,7 +35,7 @@ const Header = () => {
     <div className='w-full px-[22px] py-4 rounded-[8px] bg-[#F4FBFF] flex items-center justify-between border border-[#CFEDFB]'>
         <img src='/zeema-logo.png' alt='Zeema Homes Logo' className='w-[180px]' />
 
-        <ul className='flex items-center gap-5'>
+        <ul className='hidden lg:flex items-center gap-5'>
             {NavItems.map((item) => (
                 <li>
                     <Link href={item.url} className={`text-base font-bold font-lato ${item.url == pathname ? 'text-primary' : 'text-secondary'}`}>
