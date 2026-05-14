@@ -18,7 +18,7 @@ export const fetchProperties = async () : Promise<Property[]>=> {
 
 export const fetchRecentBlogPosts = async () : Promise<BlogPost[]>=> {
     try {
-       const response =  await api.get(`/api/blogs/recent/`)
+       const response =  await api.get(`/api/blog/recent/`)
        return response.data as BlogPost[]
     } catch (error) {
         console.error("error fetching blog posts", error);
