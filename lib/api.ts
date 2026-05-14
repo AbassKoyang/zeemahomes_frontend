@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Property } from "./types";
+import { BlogPost, Property } from "./types";
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -12,6 +12,16 @@ export const fetchProperties = async () : Promise<Property[]>=> {
        return response.data as Property[]
     } catch (error) {
         console.error("error fetching properties", error);
+        throw error;
+    }
+}
+
+export const fetchRecentBlogPosts = async () : Promise<BlogPost[]>=> {
+    try {
+       const response =  await api.get(`/api/blogs/recent/`)
+       return response.data as BlogPost[]
+    } catch (error) {
+        console.error("error fetching blog posts", error);
         throw error;
     }
 }

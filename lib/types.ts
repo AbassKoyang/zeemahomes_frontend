@@ -34,3 +34,18 @@ export interface Property {
     'created_at':  string;
     'updated_at': string;
 }
+
+export interface BlogPost {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  cover_image: string | null;
+  images: string[];
+  author: number;
+  is_published: boolean;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
