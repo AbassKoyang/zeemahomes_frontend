@@ -7,14 +7,10 @@ import { Property } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  BedDoubleIcon,
-  Bathtub01Icon,
-  SquareIcon,
-  Location01Icon,
-  LandPlotIcon,
+  Folder02Icon,
+  Calendar03Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { cn } from "@/lib/utils";
 import { BlogPost } from "@/lib/types";
 import { format } from 'date-fns'
 
@@ -54,14 +50,13 @@ const BlogPreviewcard = ({ blog }: BlogPreviewcardProps) => {
         </div>
 
         {/* Specs */}
-        <div className="w-full flex items-center justify-between py-4 border-y border-gray-50 text-muted-foreground">
+        <div className="w-full flex items-center gap-10 py-2 border-y border-gray-50 text-muted-foreground">
           <div className="flex items-center gap-1.5">
-            <HugeiconsIcon icon={BedDoubleIcon} className="size-4 text-muted-foreground" />
+            <HugeiconsIcon icon={Calendar03Icon} className="size-4 text-muted-foreground" />
             <span className="text-xs font-medium">{format(new Date(blog.created_at), 'MMMM d, yyyy • h:mm a')}</span>
           </div>
-          <div className="w-px h-4 bg-[#E0E0E0]"></div>
           <div className="flex items-center gap-1.5">
-            <HugeiconsIcon icon={LandPlotIcon} className="size-4 text-muted-foreground" />
+            <HugeiconsIcon icon={Folder02Icon} className="size-4 text-muted-foreground" />
             <span className="text-xs font-medium">Real Estate</span>
           </div>
         </div>

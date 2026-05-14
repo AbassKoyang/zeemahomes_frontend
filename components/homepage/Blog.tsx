@@ -50,13 +50,10 @@ const Blog = () => {
         <div className="mt-16 text-center">
           <Link href="/blogs" passHref>
             <Button 
-              className="bg-primary hover:bg-primary/90 text-white h-14 px-10 rounded-[7px] text-base font-bold shadow-lg shadow-primary/20 group transition-all"
+              className="bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
             >
-              See All Blogs
-              <HugeiconsIcon 
-                icon={ArrowRight01Icon} 
-                className="ml-2 size-5 transition-transform group-hover:translate-x-1" 
-              />
+              View All Posts
+              <HugeiconsIcon icon={ArrowRight01Icon} className="ml-2 size-4 lg:size-6 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>

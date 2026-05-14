@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BlogPost, Property } from "./types";
+import { BlogPost, Property, Results } from "./types";
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -25,7 +25,7 @@ export const fetchRecentBlogPosts = async () : Promise<BlogPost[]>=> {
         throw error;
     }
 }
-export const searchProperties = async (params: Record<string, any>) : Promise<{results: Property[], count: number}> => {
+export const searchProperties = async (params: Record<string, any>, page: number) : Promise<Results<Property>> => {
     try {
         const response = await api.get(`/api/search/properties/`, { params });
         return response.data;

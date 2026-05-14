@@ -48,7 +48,7 @@ const SearchBar = () => {
 
   // Search mutation
   const searchMutation = useMutation({
-    mutationFn: (params: typeof searchParams) => searchProperties(params),
+    mutationFn: (params: typeof searchParams) => searchProperties(params, 1),
     onSuccess: (data) => {
       console.log("Search results:", data);
       const query = new URLSearchParams();

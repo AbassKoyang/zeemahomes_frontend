@@ -26,14 +26,14 @@ const WorkWithus = () => {
             </div>
             <div className="col-span-1">
                 <div className="flex items-center gap-5">
-                    <div className="relative w-[217.853px] h-[237.448px]">
+                    <div className="relative w-[177.493px] lg:w-[217.853px] h-[193.458px] lg:h-[237.448px]">
                         <Image src="/work-with-us-1.png" alt="Work with us" fill className="size-full" />
                     </div>
                     <div className="flex flex-col gap-8">
-                        <div className="relative w-[152.151px] h-[132.556px]">
+                        <div className="relative w-[123.964px] lg:w-[152.151px] h-[107.999px] lg:h-[132.556px]">
                             <Image src="/work-with-us-2.png" alt="Work with us" fill className="size-full" />
                         </div>
-                        <div className="relative w-[152.151px] h-[132.556px]">
+                        <div className="relative w-[123.964px] lg:w-[152.151px] h-[107.999px] lg:h-[132.556px]">
                             <Image src="/work-with-us-3.png" alt="Work with us" fill className="size-full" />
                         </div>
                     </div>
@@ -42,14 +42,14 @@ const WorkWithus = () => {
 
             <div className="col-span-1">
                 <div className="flex items-center gap-5">
-                    <div className="relative w-[217.853px] h-[237.448px]">
+                    <div className="relative w-[177.493px] lg:w-[217.853px] h-[193.458px] lg:h-[237.448px]">
                         <Image src="/work-with-us-4.png" alt="Work with us" fill className="size-full" />
                     </div>
                     <div className="flex flex-col gap-8">
-                        <div className="relative w-[152.151px] h-[121.029px]">
+                        <div className="relative w-[123.964px] lg:w-[152.151px] h-[107.999px] lg:h-[132.556px]">
                             <Image src="/work-with-us-5.png" alt="Work with us" fill className="size-full" />
                         </div>
-                        <div className="relative w-[152.151px] h-[121.029px]">
+                        <div className="relative w-[123.964px] lg:w-[152.151px] h-[107.999px] lg:h-[132.556px]">
                             <Image src="/work-with-us-6.png" alt="Work with us" fill className="size-full" />
                         </div>
                     </div>

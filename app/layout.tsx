@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 import Providers from "@/components/Providers";
+import Footer from "@/components/Footer";
+import FooterText from "@/components/FooterText";
 
 export default function RootLayout({
   children,
@@ -31,14 +33,16 @@ export default function RootLayout({
           <meta name="apple-mobile-web-app-title" content="Zeema Home" />
           <meta name="theme-color" content="#09A9F8" />
         </head>
-      <body className={`w-full min-h-full flex justify-center font-(--font-lato) bg-white py-6`}>
+      <body className={`w-full min-h-full flex flex-col items-center font-(--font-lato) bg-white pt-6 relative`}>
+        <BackgroundPattern />
         <div className="w-full max-w-7xl bg-transparent relative px-4 md:px-0">
-          <BackgroundPattern />
           <Header />
           <Providers>
             {children}
           </Providers>
+          <Footer />
         </div>
+        <FooterText />
         </body>
     </html>
   );
