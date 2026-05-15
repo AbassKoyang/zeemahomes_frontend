@@ -11,10 +11,21 @@ import { Loading } from '@hugeicons/core-free-icons';
 
 
 const Properties = () => {
-    const p = useSearchParams();
-    const [params, setParams] = useState(p)
-
     const { ref, inView } = useInView();
+
+    const params = useSearchParams()
+
+    const searchParams = useMemo(() => {
+        return {
+        query: params.get("q") || "",
+        location: params.get("location") || "",
+        min_price: params.get("min_price") || "",
+        max_price: params.get("max_price") || "",
+        property_type: params.get("property_type") || "",
+        status: params.get("status") || "",
+        beds: params.get("beds") || "",
+        }
+    }, [params]);
 
     const {data: properties, 
         isLoading, 
@@ -22,7 +33,7 @@ const Properties = () => {
         hasNextPage, 
         fetchNextPage, 
         isFetchingNextPage
-    } = useSearchProperties(params);
+    } = useSearchProperties(searchParams);
 
     useEffect(() => {
         if (inView && hasNextPage) {

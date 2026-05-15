@@ -25,9 +25,19 @@ export const fetchRecentBlogPosts = async () : Promise<BlogPost[]>=> {
         throw error;
     }
 }
-export const searchProperties = async (params: Record<string, any>, page: number) : Promise<Results<Property>> => {
+
+export const searchProperties = async (
+  params: Record<string, any>,
+  page: number
+): Promise<Results<Property>> => {
     try {
-        const response = await api.get(`/api/search/properties/`, { params });
+        const response = await api.get(`/api/search/properties/`, {
+            params: {
+                ...params,
+                page,
+            },
+        });
+
         return response.data;
     } catch (error) {
         console.error("error searching properties", error);
@@ -44,3 +54,13 @@ export const fetchSearchFilters = async () => {
         throw error;
     }
 }
+
+export const fetchPropertyDetails = async (slug: string): Promise<Property> => {
+  try {
+    const response = await api.get(`/api/properties/${slug}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching property details", error);
+    throw error;
+  }
+};

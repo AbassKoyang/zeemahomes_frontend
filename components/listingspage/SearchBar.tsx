@@ -17,17 +17,8 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import { HelpCircleIcon, Search01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 
-const SearchBar = () => {
-const params = useSearchParams()
-    
+const SearchBar = () => {    
 const { data, isLoading, isError } = useFetchFilters();
-  const {data: properties, 
-
-        refetch,
-        hasNextPage, 
-        fetchNextPage, 
-        isFetchingNextPage
-    } = useSearchProperties(params);
 const router = useRouter()
 const [filters, setFilters] = useState<{
     cities: string[];
@@ -122,8 +113,8 @@ if (data) {
                 />
 
                 <Select
-                    value={searchParams.status}
-                    onValueChange={(value) => setSearchParams({ ...searchParams, status: value })}
+                    value={searchParams.property_type}
+                    onValueChange={(value) => setSearchParams({ ...searchParams, property_type: value })}
                 >
                     <SelectTrigger className="border-border rounded-[10px] bg-transparent px-3 h-[50px]! focus-visible:ring-0 capitalize justify-start">
                     <SelectValue placeholder="Building Type" />
