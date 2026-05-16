@@ -29,8 +29,14 @@ const ListingClient = () => {
     }).format(price);
   };
 
+function getYouTubeId(url:string) {
+  const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
+
   return (
-    <section className='relative w-full py-14 overflow-hidden bg-transparent'>
+    <section className='relative w-full py-14 overflow-hidden'>
         {isLoading && (<div>Loading...</div>)}
         {isError && (<div>Error loading property details</div>)}
         {property && (
@@ -74,11 +80,13 @@ const ListingClient = () => {
                             <Image alt={property.title} src={property.images[0]} fill className='object-cover' />
                         </div>
                         <div className="col-span-1 row-span-1 relative rounded-[8px] overflow-hidden">
-                            <div className="size-full absolute inset-0 z-100 bg-black/70 flex items-center justify-center">
-                                <div className="p-4 text-lg bg-secondary font-lato text-white  rounded-[10px]">
-                                    <p>+6</p>
+                            {property.images.length > 5 && (
+                                <div className="size-full absolute inset-0 z-100 bg-black/70 flex items-center justify-center">
+                                    <div className="p-4 text-lg bg-secondary font-lato text-white  rounded-[10px]">
+                                        <p>{property.images.length-5}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                             <Image alt={property.title} src={property.images[0]} fill className='object-cover' />
                         </div>
                     </div>
@@ -86,10 +94,10 @@ const ListingClient = () => {
 
 
 
-                <div className="w-full mt-20 grid grid-cols-1 lg:grid-cols-3 grid-rows-2 lg:grid rows-1 gap-10">
+                <div className="w-full mt-20 grid grid-cols-1 lg:grid-cols-3 grid-rows-2 lg:grid-rows-1 gap-10">
                     <div className="col-span-1 row-span-1 lg:col-span-2">
-                        <h3 className='text-[28px] font-lato text-secondary'>Overview</h3>
-                        <div className="w-full border border-border p-[30px] rounded-[10px] flex items-center justify-between bg-white mt-[30px]">
+                        <h3 className='text-xl lg:text-[28px] font-lato text-secondary'>Overview</h3>
+                        <div className="w-full border border-border p-[30px] rounded-[10px] flex items-center lg:justify-between flex-wrap gap-10 lg:gap-0 bg-white mt-[30px]">
                             <div className="">
                                 <div className="flex items-center gap-2">
                                     <HugeiconsIcon icon={BedDoubleIcon} className="size-4 text-muted-foreground" />
@@ -131,7 +139,7 @@ const ListingClient = () => {
                             <p className='text-base font-lato text-muted-foreground'>{property.overview}</p>
                         </div>
 
-                        <div className="w-full bg-white border border-border p-[30px] rounded-[10px] mt-[30px] flex items-center justify-between">
+                        <div className="w-full bg-white border border-border p-[30px] rounded-[10px] mt-[30px] flex items-center lg:justify-between flex-wrap gap-10 lg:gap-0">
                             <div className="flex items-center gap-1">
                                 {property.has_hvac ? (
                                     <HugeiconsIcon icon={CheckCircle} className="size-4 text-primary" />
@@ -165,8 +173,23 @@ const ListingClient = () => {
                                 <p className='text-sm font-lato text-muted-foreground'>Laundry</p>
                             </div>
                         </div>
+
+                        {
+                            property.video_url && (
+                                <div className='w-full mt-[30px]'>
+                                    <iframe
+                                    className='w-full h-[400px] rounded-[10px] overflow-hidden' 
+                                    src={`https://www.youtube.com/embed/${getYouTubeId(property.video_url)}`} 
+                                    title="YouTube video player" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    >
+                                    </iframe>
+                                </div>
+                            )
+                        }
                     </div>
-                     <div className="col-span-1 border border-border p-[30px] rounded-[10px] bg-white h-fit">
+
+                     <div className="col-span-1 row-span-1 border border-border p-[30px] rounded-[10px] bg-white h-fit">
                         <div className="w-full">
                             <h1 className="text-lg md:text-xl font-medium text-secondary tracking-tight font-lato">
                                 {property?.title}
