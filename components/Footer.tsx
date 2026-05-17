@@ -1,10 +1,32 @@
-import { Call02Icon, FacebookIcon, Instagram, Location01Icon, Mail02Icon, TiktokIcon, WhatsappIcon } from '@hugeicons/core-free-icons'
+'use client';
+import { Call02Icon, FacebookIcon, Instagram, Loading02Icon, Location01Icon, Mail02Icon, TiktokIcon, WhatsappIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import Link from 'next/link'
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Input } from './ui/input'
+import { toast } from 'sonner';
+import { api } from '@/lib/api';
 
 const Footer = () => {
+    const [email, setEmail] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    
+    const handleNewsletterSubscription = async (e: FormEvent) => {
+      e.preventDefault()
+      setIsSubmitting(true)
+      try {
+        const response = await api.post('/api/newsletter/', { email })
+        console.log(response.data)
+        toast.success('Subscribed successfully!')
+        setEmail('')
+      } catch (error) {
+        console.error(error)
+        toast.error('Failed to subscribe.')
+      } finally {
+        setIsSubmitting(false)
+      }
+    }
+
   return (
     <section className="w-full border-t border-[#0b2545]/3 bg-white py-20">
         <div className="w-full flex flex-wrap gap-10 lg:gap-0 lg:grid md:grid-cols-5">
@@ -69,9 +91,17 @@ const Footer = () => {
             <div className="col-span-2 lg:px-8">
                 <h1 className='text-xl text-secondary font-lato font-semibold mb-8'>Subscribe</h1>
                 <p className='text-muted-foreground hover:text-secondary text-base mb-5'>Sign Up for Our Newsletter to get Latest Updates and Offers</p>
-                <div className="w-full flex items-center h-[50px]">
-                    <Input className='w-[70%] h-full text-base font-lato text-secondary lg:border-r-none rounded-r-none focus-visible:ring-primary focus-visible:border-none outline-none focus-visible:outline-none' placeholder='Your email' />
-                    <button className='w-[30%] h-full bg-primary text-white text-base font-lato font-bold rounded-l-none rounded-r-[10px]'>Subscribe</button>
+                <div className="w-full flex items-center h-[50px] group overflow-hidden">
+                    <Input value={email} onChange={(e) => setEmail(e.target.value)} className='w-[70%] h-full text-base font-lato text-secondary lg:border-r-none rounded-r-none focus-visible:ring-primary focus-visible:border-none outline-none focus-visible:outline-none' placeholder='Your email' />
+                    <button onClick={handleNewsletterSubscription} className='w-[30%] h-full bg-primary text-white text-base font-lato font-bold rounded-l-none rounded-r-[10px] group-focus-within:border-2 border-primary flex items-center justify-center cursor-pointer'>
+                    {
+                        isSubmitting ? (
+                            <HugeiconsIcon icon={Loading02Icon} className="w-4 h-4 animate-spin" />
+                        ) : (
+                            <p>Subscribe</p>
+                        )
+                    }
+                    </button>
                 </div>
             </div>
         </div>

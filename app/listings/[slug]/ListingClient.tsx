@@ -94,8 +94,8 @@ function getYouTubeId(url:string) {
 
 
 
-                <div className="w-full mt-20 grid grid-cols-1 lg:grid-cols-3 grid-rows-2 lg:grid-rows-1 gap-10">
-                    <div className="col-span-1 row-span-1 lg:col-span-2">
+                <div className="w-full mt-20 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-1 gap-10">
+                    <div className="col-span-1 lg:col-span-2">
                         <h3 className='text-xl lg:text-[28px] font-lato text-secondary'>Overview</h3>
                         <div className="w-full border border-border p-[30px] rounded-[10px] flex items-center lg:justify-between flex-wrap gap-10 lg:gap-0 bg-white mt-[30px]">
                             <div className="">
@@ -189,7 +189,7 @@ function getYouTubeId(url:string) {
                         }
                     </div>
 
-                     <div className="col-span-1 row-span-1 border border-border p-[30px] rounded-[10px] bg-white h-fit">
+                     <div className="col-span-1 border border-border p-[30px] rounded-[10px] bg-white h-fit">
                         <div className="w-full">
                             <h1 className="text-lg md:text-xl font-medium text-secondary tracking-tight font-lato">
                                 {property?.title}
