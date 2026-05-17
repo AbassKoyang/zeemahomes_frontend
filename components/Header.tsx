@@ -28,7 +28,7 @@ const Header = () => {
         },
         {
             label: 'Blog',
-            url: '/blog'
+            url: '/blogs'
         },
     ]
   return (
