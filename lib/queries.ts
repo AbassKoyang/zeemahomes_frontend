@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { fetchProperties, fetchPropertyDetails, fetchRecentBlogPosts, fetchSearchFilters, searchProperties } from "./api";
-import { Property } from "./types";
+import { fetchAllBlogPosts, fetchBlogDetails, fetchProperties, fetchPropertyDetails, fetchRecentBlogPosts, fetchSearchFilters, searchProperties } from "./api";
+import { BlogPost, Property } from "./types";
 
 // Fetch filter options to populate dropdowns
   export const useFetchFilters = () => useQuery({
@@ -36,9 +36,33 @@ export const useSearchProperties = (params: Record<string, any>) =>
     initialPageParam: 1,
 });
 
+export const useFetchAllBlogPosts = () =>
+  useInfiniteQuery({
+    queryKey: ["allBlogPosts"],
+    queryFn: ({ pageParam = 1 }) => fetchAllBlogPosts(pageParam),
+
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.next) return undefined;
+
+      const url = new URL(String(lastPage.next));
+
+      return Number(url.searchParams.get("page"));
+    },
+
+    initialPageParam: 1,
+  });
+
+
 export const usePropertyDetails = (slug: string) => {
   return useQuery<Property>({
     queryKey: ["propertyDetails", slug],
     queryFn: () => fetchPropertyDetails(slug),
+  });
+};
+
+export const useBlogDetails = (slug: string) => {
+  return useQuery<BlogPost>({
+    queryKey: ["blogDetails", slug],
+    queryFn: () => fetchBlogDetails(slug),
   });
 };

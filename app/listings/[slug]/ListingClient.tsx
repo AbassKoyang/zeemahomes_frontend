@@ -1,6 +1,7 @@
 'use client';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { usePropertyDetails } from '@/lib/queries';
 import { Property } from '@/lib/types';
 import { Bathtub01Icon, BedDoubleIcon, Calendar03Icon, Call02Icon, CancelCircleIcon, CheckCircle, GarageIcon, LandPlotIcon, Location01Icon } from '@hugeicons/core-free-icons';
@@ -37,8 +38,34 @@ function getYouTubeId(url:string) {
 
   return (
     <section className='relative w-full py-14 overflow-hidden'>
-        {isLoading && (<div>Loading...</div>)}
-        {isError && (<div>Error loading property details</div>)}
+        {isLoading && (
+            <div className='w-full'>
+                <div className="w-full flex items-center justify-between">
+                    <div className="">
+                        <Skeleton className='w-[250px] rounded-sm h-10' />
+                        <div className="flex items-center gap-3 mt-6">
+                            <Skeleton className='w-[100px] rounded-sm h-8' />
+                            <Skeleton className='w-[100px] rounded-sm h-8' />
+                        </div>
+                    </div>
+                    <Skeleton className='w-[300px] rounded-sm h-12' />
+                </div>
+                <div className="w-full p-4 b border-3 border-border rounded-[16px] grid-cols-1 grid-rows-2 lg:grid-rows-1 grid lg:grid-cols-3 gap-2 mt-10 h-[800px] lg:h-[400px]">
+                    <Skeleton className="col-span-1 row-span-1 lg:col-span-2 h-full rounded-sm" />
+                    <div className="h-full row-span-1 col-span-1 grid grid-cols-2 grid-rows-2 gap-2">
+                        <Skeleton className='col-span-1 row-span-1 rounded-sm' />
+                        <Skeleton className='col-span-1 row-span-1 rounded-sm' />
+                        <Skeleton className='col-span-1 row-span-1 rounded-sm' />
+                        <Skeleton className='col-span-1 row-span-1 rounded-sm' />
+                    </div>
+                </div>
+            </div>
+        )}
+        {isError && (
+            <div className="text-center py-20 bg-gray-50 rounded-2xl">
+            <p className="text-muted-foreground font-medium">Failed to load property. Please try again later.</p>
+            </div>
+        )}
         {property && (
             <div className="w-full">
                 <div className="w-full lg:flex items-start justify-between">
@@ -96,7 +123,7 @@ function getYouTubeId(url:string) {
 
                 <div className="w-full mt-20 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-1 gap-10">
                     <div className="col-span-1 lg:col-span-2">
-                        <h3 className='text-xl lg:text-[28px] font-lato text-secondary'>Overview</h3>
+                        <h3 className='text-xl lg:text-[28px] font-lato text-secondary font-semibold'>Overview</h3>
                         <div className="w-full border border-border p-[30px] rounded-[10px] flex items-center lg:justify-between flex-wrap gap-10 lg:gap-0 bg-white mt-[30px]">
                             <div className="">
                                 <div className="flex items-center gap-2">

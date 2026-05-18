@@ -20,16 +20,9 @@ interface BlogPreviewcardProps {
 }
 
 const BlogPreviewcard = ({ blog }: BlogPreviewcardProps) => {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-NG", {
-      style: "currency",
-      currency: "NGN",
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
-
 
   return (
+    <Link href={`/blogs/${blog.slug}`}>
     <div className="group bg-white rounded-[16px] overflow-hidden border border-[#E5EBEE] hover:shadow-sm transition-all duration-300 flex flex-col h-full p-3 font-lato">
       {/* Image Section */}
       <div className="relative aspect-[4/3] overflow-hidden rounded-[8px]">
@@ -69,6 +62,7 @@ const BlogPreviewcard = ({ blog }: BlogPreviewcardProps) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

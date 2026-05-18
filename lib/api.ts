@@ -35,6 +35,16 @@ export const fetchRecentBlogPosts = async () : Promise<BlogPost[]>=> {
         throw error;
     }
 }
+export const fetchAllBlogPosts = async (page: number) : Promise<Results<BlogPost>>=> {
+    try {
+       const response =  await api.get(`/api/blog/?page=${page}`)
+       console.log(response.data)
+       return response.data
+    } catch (error) {
+        console.error("error fetching blog posts", error);
+        throw error;
+    }
+}
 
 export const searchProperties = async (
   params: Record<string, any>,
@@ -47,6 +57,8 @@ export const searchProperties = async (
                 page,
             },
         });
+
+        console.log(response.data)
 
         return response.data;
     } catch (error) {
@@ -71,6 +83,17 @@ export const fetchPropertyDetails = async (slug: string): Promise<Property> => {
     return response.data;
   } catch (error) {
     console.error("Error fetching property details", error);
+    throw error;
+  }
+};
+
+
+export const fetchBlogDetails = async (slug: string): Promise<BlogPost> => {
+  try {
+    const response = await api.get(`/api/blog/${slug}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching blog details", error);
     throw error;
   }
 };

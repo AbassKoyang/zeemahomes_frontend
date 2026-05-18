@@ -1,10 +1,14 @@
+'use client';
 import { ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import React from 'react'
 import { Button } from '../ui/button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
 
 const WorkWithus = () => {
+    const router = useRouter()
+    
   return (
     <section className="w-full py-20">
         <div className='bg-secondary rounded-[16px] px-[47px] py-[61px] grid grid-rows-2 lg:grid-rows-1 grid-cols-1 lg:grid-cols-3 gap-8 relative'>
@@ -18,6 +22,7 @@ const WorkWithus = () => {
                     </p>
                 </div>
                 <Button 
+                onClick={() => router.push('/contact')} 
                     className="w-fit bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
                     >
                     Work With Us

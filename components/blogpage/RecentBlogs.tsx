@@ -11,6 +11,7 @@ import { Calendar03Icon, Folder02Icon, Loading } from '@hugeicons/core-free-icon
 import BlogPreviewcard from '../homepage/BlogPreviewcard';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 
 const RecentBlogs = () => {
@@ -23,10 +24,15 @@ const RecentBlogs = () => {
   return (
     <div className=" w-full mt-14">
         {isLoading && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Skeleton key={i} className="aspect-4/5 rounded-2xl" />
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="col-span-1 h-[470px] relative rounded-[10px] overflow-hidden">
+                <Skeleton className="size-full rounded-2xl" />
+            </div>
+            <div className="col-span-1 flex gap-8 flex-col">
+                {[1, 2, 3].map((i) => (
+                  <Skeleton key={i} className="w-full h-[150px] rounded-2xl" />
+                ))}
+            </div>
           </div>
         )}
 
@@ -39,12 +45,13 @@ const RecentBlogs = () => {
         {blogposts && blogposts.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="col-span-1 h-[470px] relative rounded-[10px] overflow-hidden">
+                <Link href={`/blogs/${blogposts[0].slug}`}>
                 <div className="size-full absolute inset-0 z-10">
                   <div className="size-full relative">
                     <Image src={blogposts[0].cover_image as string} fill alt={blogposts[0].title} className='object-cover' />
                   </div>
                 </div>
-                <div className="size-full absolute flex flex-col justify-end inset-0 z-30 bg-linear-to-b from-transparent via-black/20 to-black/40 p-[30px]">
+                <div className="size-full absolute flex flex-col justify-end inset-0 z-30 bg-linear-to-b from-transparent via-black/30 to-black/60 p-[30px]">
                 <div>
                    <div>
                     <h3 className="text-lg font-semibold text-white line-clamp-1 group-hover:text-primary transition-colors">
@@ -72,22 +79,24 @@ const RecentBlogs = () => {
                   </div>
                   </div>
                 </div>
+                </Link>
               </div>
               <div className="col-span-1 flex gap-8 flex-col bg-white">
-                {blogposts.map((blog)=> (
-                  <div className="w-full flex items-center justify-between rounded-[10px] overflow-hidden border border-border">
-                    <div className="w-[180px] h-full min-h-[150px] relative bg-pink-300">
+                {blogposts.slice(0,3).map((blog)=> (
+                  <Link href={`/blogs/${blog.slug}`}>
+                  <div className="w-full h-[150px] flex items-center justify-between rounded-[10px] overflow-hidden border border-border">
+                    <div className="w-[150px] lg:w-[180px] h-full min-h-[120px] lg:min-h-[150px] relative bg-gray-100">
                           <Image src={blog.cover_image as string} fill alt={blog.title}  />
                     </div>
-                    <div className="w-[70%] p-[20px]">
+                    <div className="w-[70%] p-[10px] lg:p-[20px]">
                       <div>
-                        <h3 className="text-lg font-semibold text-secondary line-clamp-1 group-hover:text-primary transition-colors">
+                        <h3 className="text-base lg:text-lg font-semibold text-secondary line-clamp-1 group-hover:text-primary transition-colors">
                           {blog.title}
                         </h3>
                       </div>
                       
                               {/* Specs */}
-                              <div className="w-full flex items-center gap-10 py-2 border-y border-gray-50 text-muted-foreground">
+                              <div className="w-full flex items-center gap-10 py-2 text-muted-foreground">
                                 <div className="flex items-center gap-1.5">
                                   <HugeiconsIcon icon={Calendar03Icon} className="size-4 text-muted-foreground" />
                                   <span className="text-xs font-medium">{format(new Date(blog.created_at), 'MMMM d, yyyy • h:mm a')}</span>
@@ -99,13 +108,14 @@ const RecentBlogs = () => {
                               </div>
                       
                               {/* Footer */}
-                              <div className="mt-auto flex items-center justify-between gap-4 pt-4 border-t border-[#E0E0E0]">
-                                <p className="text-xs font-medium text-muted-foreground">
+                              <div className="mt-auto flex items-center justify-between gap-4">
+                                <p className="text-[10px] lg:text-xs font-medium text-muted-foreground">
                                   {blog.excerpt}
                                 </p>
                               </div>
                     </div>
                   </div>
+                  </Link>
                 ))}
               </div>
             </div>

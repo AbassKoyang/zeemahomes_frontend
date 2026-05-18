@@ -1,6 +1,6 @@
 'use client';
-import { useSearchProperties } from '@/lib/queries'
-import { Property } from '@/lib/types'
+import { useFetchAllBlogPosts, useSearchProperties } from '@/lib/queries'
+import { BlogPost, Property } from '@/lib/types'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -8,32 +8,21 @@ import PropertyPreviewCard from '../homepage/PropertyPreviewCard'
 import { Skeleton } from '../ui/skeleton'
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Loading } from '@hugeicons/core-free-icons';
+import BlogPreviewcard from '../homepage/BlogPreviewcard';
 
 
 const AllBlogs = () => {
     const { ref, inView } = useInView();
 
-    const params = useSearchParams()
-
-    const searchParams = useMemo(() => {
-        return {
-        query: params.get("q") || "",
-        location: params.get("location") || "",
-        min_price: params.get("min_price") || "",
-        max_price: params.get("max_price") || "",
-        property_type: params.get("property_type") || "",
-        status: params.get("status") || "",
-        beds: params.get("beds") || "",
-        }
-    }, [params]);
-
-    const {data: properties, 
+    const {data: blogposts, 
         isLoading, 
         isError,
         hasNextPage, 
         fetchNextPage, 
         isFetchingNextPage
-    } = useSearchProperties(searchParams);
+    } = useFetchAllBlogPosts();
+
+    console.log(blogposts)
 
     useEffect(() => {
         if (inView && hasNextPage) {
@@ -42,14 +31,14 @@ const AllBlogs = () => {
     }, [inView, hasNextPage, fetchNextPage]);
 
 
-    const allProperties = useMemo(() => {
-        return properties?.pages?.flatMap(page => page.results) ;
-    }, [properties]);
+    const allblogposts = useMemo(() => {
+        return blogposts?.pages?.flatMap(page => page.results) ;
+    }, [blogposts]);
 
-    console.log(allProperties)
+    console.log(allblogposts)
 
   return (
-    <div className=" w-full mt-14">
+    <div className=" w-full mt-[30px]">
         {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -60,20 +49,20 @@ const AllBlogs = () => {
 
         {isError && (
         <div className="text-center py-20 bg-gray-50 rounded-2xl">
-            <p className="text-muted-foreground font-medium">Failed to load properties. Please try again later.</p>
+            <p className="text-muted-foreground font-medium">Failed to load blog posts. Please try again later.</p>
           </div>
         )}
 
-        {allProperties && allProperties.length > 0 && (
+        {allblogposts && allblogposts.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allProperties.map((property: Property) => (
-                <PropertyPreviewCard key={property.id} property={property} />
+            {allblogposts.map((blog: BlogPost) => (
+                <BlogPreviewcard key={blog.id} blog={blog} />
             ))}
             </div>
         )}
-        {allProperties && allProperties.length < 1 && (
+        {!isLoading && allblogposts && allblogposts.length < 1 && (
              <div className="text-center py-20 bg-gray-50 rounded-2xl">
-            <p className="text-muted-foreground font-medium">No properties found at the moment.</p>
+            <p className="text-muted-foreground font-medium">No blog posts found at the moment.</p>
           </div>
         )}
         <div ref={ref} className="w-full flex items-center justify-center mt-6">

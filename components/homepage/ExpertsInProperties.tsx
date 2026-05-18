@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import { Button } from "@/components/ui/button";
 import {
@@ -5,9 +6,11 @@ import {
   HelpCircleIcon,
 } from "@hugeicons/core-free-icons";
 import {HugeiconsIcon} from '@hugeicons/react'
+import { useRouter } from 'next/navigation';
 
 
 const ExpertInProperties = () => {
+    const router = useRouter()
     const stats = [
         {
             icon: <svg xmlns="http://www.w3.org/2000/svg" className='size-[20px] lg:size-[30px]' viewBox="0 0 30 30" fill="none">
@@ -90,7 +93,8 @@ const ExpertInProperties = () => {
                         ))
                     }
                 </div>
-                <Button 
+                <Button
+                onClick={() => router.push('/about')}  
                     className="bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
                     >
                     Learn About Us
