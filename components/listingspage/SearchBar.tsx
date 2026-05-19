@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/select";
 import { useMutation } from '@tanstack/react-query';
 import { searchProperties } from '@/lib/api';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useFetchFilters, useSearchProperties } from '@/lib/queries';
+import { useRouter } from 'next/navigation';
+import { useFetchFilters } from '@/lib/queries';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';

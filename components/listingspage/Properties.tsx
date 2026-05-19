@@ -46,8 +46,6 @@ const Properties = () => {
         return properties?.pages?.flatMap(page => page.results) ;
     }, [properties]);
 
-    console.log(allProperties)
-
   return (
     <div className=" w-full mt-14">
         {isLoading && (
