@@ -19,9 +19,9 @@ import { useRouter } from "next/navigation";
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { SplitText } from "gsap/all";
+import { SplitText, ScrambleTextPlugin } from "gsap/all";
 
-gsap.registerPlugin(useGSAP, SplitText);
+gsap.registerPlugin(useGSAP, SplitText, ScrambleTextPlugin);
 
 const Hero = () => {
   const router = useRouter()
@@ -30,17 +30,15 @@ const Hero = () => {
 useGSAP(() => {
   const tl = gsap.timeline();
 
-   // Split heading into WORDS
-  const split = SplitText.create('.hero-heading', {
+    const split = SplitText.create('.hero-heading > span > :not(.inline-block), .hero-heading > :not(span)', {
     type: 'words',
   });
 
-  // Animate words
   tl.from(split.words, {
     y: 100,
     autoAlpha: 0,
-    stagger: 0.08,
-    duration: 1,
+    stagger: 0.1,
+    duration: 0.8,
     ease: 'power3.out',
   });
 
@@ -53,7 +51,7 @@ useGSAP(() => {
     {
       y: 0,
       autoAlpha: 1,
-      duration: 0.5,
+      duration: 0.2,
       ease: 'power2.inOut',
     }
   );
@@ -67,14 +65,70 @@ useGSAP(() => {
     {
       y: 0,
       autoAlpha: 1,
-      duration: 0.4,
+      duration: 0.3,
       stagger: {
-        each: 0.2,
+        each: 0.15,
       },
       ease: 'power3.out',
     }
   );
+
+  tl.fromTo(
+    '.partner',
+    {
+      scale: 0,
+      autoAlpha: 0,
+    },
+    {
+      scale: 1,
+      autoAlpha: 1,
+      duration: 0.3,
+      stagger: {
+        each: 0.15,
+      },
+      ease: 'power3.out',
+    }
+  );
+
+  const loopTl = gsap.timeline({ repeat: -1 });
+  
+  loopTl.to('.word-slider', {
+    yPercent: -25, // Move to RENT
+    duration: 0.6,
+    ease: "power3.inOut",
+    delay: 1.5
+  })
+  .to('.word-slider', {
+    yPercent: -50, // Move to SELL
+    duration: 0.6,
+    ease: "power3.inOut",
+    delay: 1.5
+  })
+  .to('.word-slider', {
+    yPercent: -75, // Move to the bottom duplicate BUY
+    duration: 0.6,
+    ease: "power3.inOut",
+    delay: 1.5
+  });
+
+
 }, { scope: container });
+
+useGSAP(() => {
+    gsap.fromTo(
+    '.hero-img',
+    {
+      x: 500,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      duration: 1,
+      ease: 'power2.inOut',
+    }
+  );
+}, { scope: container })
 
   return (
     <section ref={container} className="relative w-full pt-4 pb-20 overflow-hidden bg-transparent">
@@ -83,18 +137,30 @@ useGSAP(() => {
           {/* Left Content */}
           <div className="w-full flex-1 flex lg:block flex-col items-center justify-center space-y-5 text-center lg:text-left font-lato">
             <h1 className="hero-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-secondary tracking-tight lg:mt-14">
-              <span className="">BUY YOUR NEXT</span> <br />
+                <span className="inline-flex items-baseline gap-x-2 lg:gap-x-0">
+                <span className="inline-block overflow-hidden h-[1.1em] align-bottom relative">
+                  <span className="word-slider flex flex-col transition-none">
+                    <span className="h-[1.1em] flex items-center">SELL</span>
+                    <span className="h-[1.1em] flex items-center lg:-tracking-widest">GRAB</span>
+                    <span className="h-[1.1em] flex items-center">RENT</span>
+                    {/* CRITICAL: Duplicate item at the bottom prevents visual snapping */}
+                    <span className="h-[1.1em] flex items-center">SELL</span>
+                  </span>
+                </span>
+                <span>YOUR NEXT</span>
+              </span>
+              <br />
               PERFECT <span className="text-primary uppercase">PLACE</span>
             </h1>
             <p className="hero-desc text-muted-foreground text-base md:text-xl font-medium max-w-lg mx-auto lg:mx-0">
-              More than 500+ house available for sale & rent
+              Explore verified homes, apartments, and investment properties across Lagos and Abuja with confidence
             </p>
             <div className="w-full lg:w-fit flex flex-wrap items-center justify-center lg:justify-start gap-3 lg:gap-5">
               <Button
                 onClick={() => router.push('/listings')} 
                 className="hero-button bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-4 lg:px-10 rounded-[4px] lg:rounded-[7px] text-sm lg:text-lg font-bold group transition-all shadow-lg shadow-primary/20"
               >
-                Browse Home
+                Browse Homes
                 <HugeiconsIcon icon={ArrowRight01Icon} className="ml-2 size-4 lg:size-6 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button 
@@ -110,17 +176,17 @@ useGSAP(() => {
             {/* Partners */}
             <div className="pt-5">
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 lg:gap-14">
-                <img src="/partner-1.png" alt="Partner 1" className="w-[60px] lg:w-[90px]" />
-                <img src="/partner-2.png" alt="Partner 2" className="w-[60px] lg:w-[90px]" />
-                <img src="/partner-3.png" alt="Partner 3" className="w-[60px] lg:w-[90px]" />
-                <img src="/partner-4.png" alt="Partner 4" className="w-[30px] lg:w-[40px]" />
+                <img src="/partner-1.png" alt="Partner 1" className="partner w-[60px] lg:w-[90px]" />
+                <img src="/partner-2.png" alt="Partner 2" className="partner w-[60px] lg:w-[90px]" />
+                <img src="/partner-3.png" alt="Partner 3" className="partner w-[60px] lg:w-[90px]" />
+                <img src="/partner-4.png" alt="Partner 4" className="partner w-[30px] lg:w-[40px]" />
               </div>
             </div>
           </div>
 
           {/* Right Content - Hero Image */}
           <div className="flex-1 relative w-full max-w-2xl lg:max-w-none">
-            <div className="relative aspect-square w-full max-w-[550px] max-h-[450px] ml-auto">
+            <div className="hero-img relative aspect-square w-full max-w-[550px] max-h-[450px] ml-auto">
                 <div className="relative h-full w-full">
                 <Image
                     src="/hero-house-image.png"
@@ -128,6 +194,7 @@ useGSAP(() => {
                     fill
                     className="object-cover object-top transition-transform duration-700"
                     priority
+                    loading="eager"
                 />
                 
                 {/* Agent Card Overlay */}

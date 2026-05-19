@@ -28,33 +28,33 @@ const Testimonials = () => {
   const testimonials = [
     {
         name: "Godswill Jonathan",
-        testimony: "I was able to get the house of my dreams thanks to Zeema homes. The after sales support is excuisite. They were a part of every journey, I’ll recommend Zeema homes to anyone interested in buying a house.",
+        testimony: "Zeema Homes made my home-buying experience smooth and stress-free. Their team was professional, responsive, and helped me find the perfect property within my budget",
         image: "/partner-1.png",
         title: "Product Designer"
     },
     {
-        name: "Godswill Jonathan",
-        testimony: "I was able to get the house of my dreams thanks to Zeema homes. The after sales support is excuisite. They were a part of every journey, I’ll recommend Zeema homes to anyone interested in buying a house.",
+        name: "Joke Akinlasa",
+        testimony: "I was impressed by how transparent and reliable the entire process was. From inspection to documentation, everything was handled professionally.",
         image: "/partner-1.png",
-        title: "Product Designer"
+        title: "Virtual Assistant"
     },
     {
-        name: "Godswill Jonathan",
-        testimony: "I was able to get the house of my dreams thanks to Zeema homes. The after sales support is excuisite. They were a part of every journey, I’ll recommend Zeema homes to anyone interested in buying a house.",
+        name: "John Doe",
+        testimony: "Finding a secure investment property in Lagos felt overwhelming until I worked with Zeema Homes. They truly understand the market and care about their clients..",
         image: "/partner-1.png",
-        title: "Product Designer"
+        title: "Business Man"
     },
     {
-        name: "Godswill Jonathan",
-        testimony: "I was able to get the house of my dreams thanks to Zeema homes. The after sales support is excuisite. They were a part of every journey, I’ll recommend Zeema homes to anyone interested in buying a house.",
+        name: "Chioma Eze",
+        testimony: "Zeema Homes helped me secure a beautiful apartment in a great neighborhood without unnecessary stress. Their professionalism and honesty stood out throughout the entire process.",
         image: "/partner-1.png",
-        title: "Product Designer"
+        title: "Business Owner"
     },
     {
-        name: "Godswill Jonathan",
-        testimony: "I was able to get the house of my dreams thanks to Zeema homes. The after sales support is excuisite. They were a part of every journey, I’ll recommend Zeema homes to anyone interested in buying a house.",
+        name: "Mr. Yusuf Lawal",
+        testimony: "I had been searching for a reliable real estate company for months before discovering Zeema Homes. They guided me properly, answered all my questions, and helped me make a confident investment decision.",
         image: "/partner-1.png",
-        title: "Product Designer"
+        title: "Entrepreneur"
     },
   ]
 

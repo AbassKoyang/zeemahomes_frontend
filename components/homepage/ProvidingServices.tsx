@@ -7,6 +7,12 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { cn } from "@/lib/utils";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger, SplitText } from "gsap/all";
+
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 const services = [
   { id: 0,
@@ -53,16 +59,49 @@ const services = [
 ];
 
 const ProvidingServices = () => {
+
+    const container = useRef<HTMLDivElement>(null);
+  
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 90%',
+        toggleActions: 'play none none reverse',
+      }
+    });
+  
+    tl.fromTo(
+      '.service-card',
+      {
+        scale: 0,
+        autoAlpha: 0,
+      },
+      {
+        scale: 1,
+        autoAlpha: 1,
+        duration: 0.3,
+      stagger: {
+        each: 0.15,
+      },
+        ease: 'power3.out',
+      }
+    );
+  
+  
+  }, { scope: container });
+
+
   return (
-    <section className="py-20 bg-transparent font-lato">
+    <section ref={container} className="py-20 bg-transparent font-lato">
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-16 space-y-2">
           <h2 className="text-3xl md:text-4xl font-semibold text-secondary tracking-tight">
             What We Are <span className="text-primary">Providing</span>
           </h2>
-          <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
-            Discover Our Services
+          <p className="text-xs font-bold text-muted-foreground tracking-[0.2em]">
+            Professional real estate solutions tailored to your lifestyle and investment goals.
           </p>
         </div>
 
@@ -72,7 +111,7 @@ const ProvidingServices = () => {
             <div
               key={index}
               className={cn(
-                "relative group flex flex-col items-center text-center p-8 transition-all duration-500",
+                "relative group flex flex-col items-center text-center p-8 transition-all duration-500 service-card",
                 service.highlight 
                   ? "bg-primary text-white shadow-[0_20px_50px_rgba(9,169,248,0.3)] z-10 scale-105 rounded-[10px]" 
                   : "bg-white text-secondary border border-gray-100 hover:shadow-xl rounded-[10px] md:rounded-none",
@@ -100,8 +139,8 @@ const ProvidingServices = () => {
               {/* Subtle Pattern (Optional) */}
               {service.highlight && (
                 <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl opacity-10">
-                  <div className="absolute -right-10 -top-10 size-40 border-[20px] border-white rounded-full"></div>
-                  <div className="absolute -left-10 -bottom-10 size-60 border-[20px] border-white rounded-full opacity-50"></div>
+                  <div className="absolute -right-10 -top-10 size-40 border-20 border-white rounded-full"></div>
+                  <div className="absolute -left-10 -bottom-10 size-60 border-20 border-white rounded-full opacity-50"></div>
                 </div>
               )}
 

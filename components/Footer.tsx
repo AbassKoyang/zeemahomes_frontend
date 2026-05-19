@@ -15,6 +15,10 @@ const Footer = () => {
       e.preventDefault()
       setIsSubmitting(true)
       try {
+        if (!email) {
+            toast.error('Please enter your email!')
+            return
+        }
         const response = await api.post('/api/newsletter/', { email })
         console.log(response.data)
         toast.success('Subscribed successfully!')

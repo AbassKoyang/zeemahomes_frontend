@@ -2,22 +2,32 @@ import Image from 'next/image'
 import { ArrowRight01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 const page = () => {
   return (
     <div className='relative w-full py-14 overflow-hidden'>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-1 gap-10 lg:gap-16">
             <div className="col-span-1">
-                <h1 className='text-3xl lg:text-6xl font-semibold font-lato text-secondary uppercase'>about us: <span className='text-primary'>zeema</span></h1>
-                <div className="w-full h-[200px] lg:h-[300px] relative border-5 border-primary mt-3">
+                <div className="w-full h-[200px] lg:h-full relative border-5 border-primary">
                     <Image src='/about-us-1.jpeg' alt='About Us' fill className='object-cover' />
                 </div>
             </div>
             <div className="col-span-1">
-                <p className='text-sm lg:text-base text-muted-foreground font-lato'>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <br/>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. <br/>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim...<br/>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim...
-                    <br/>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim...
-                </p>
+                <div className="p-7 lg:pl-12 border border-border rounded-[16px] bg-white h-fit">
+                    <h2 className="text-3xl md:text-4xl font-semibold text-secondary tracking-tight font-lato uppercase">
+                    about us
+                    </h2>
+                    <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
+                        Zeema Homes is a modern real estate brand focused on helping individuals and families find secure, valuable properties across Lagos and beyond. We combine market expertise, transparency, and personalized service to simplify every step of the property journey.
+                    </p>
+                    <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
+                        With a strong understanding of the Nigerian real estate market, our team is dedicated to connecting clients with opportunities that align with their lifestyle, goals, and long-term investment plans.
+                    </p>
+                    <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
+                        At Zeema Homes, we believe real estate is more than buying property — it’s about building stability, growth, and a future you can confidently invest in.
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -28,20 +38,22 @@ const page = () => {
                     Our Story
                     </h2>
                     <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
-                        RealPro is proud to be a trusted leader in real estate, offering comprehensive solutions and professional services in the property industry. With over 10 years of experience, we continue to grow and innovate, upholding a tradition of quality and reliability.
+                       Zeema Homes was built from a vision to make property ownership more accessible, trustworthy, and stress-free for everyday Nigerians. What started as a passion for helping people secure better living opportunities has grown into a trusted real estate brand.
                     </p>
                     <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
-                        At RealPro, we are committed to putting clients first, dedicated to helping them find their dream homes or valuable investment opportunities. Our team of seasoned experts is always ready to share deep market insights and knowledge to provide clients with the best options available.
+                       Over the years, we’ve helped clients navigate the fast-moving property market with confidence by providing verified listings, honest guidance, and reliable support throughout the process.
                     </p>
                     <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
-                        RealPro is more than just a real estate company – we are a reliable partner, walking with you every step of the way in building your home and growing your investments with confidence.
+                        Today, Zeema Homes continues to grow with one clear mission — helping people make smarter property decisions while creating lasting value through real estate.
                     </p>
+                    <Link href='/contact'>
                     <Button 
                         className="mt-5 w-fit bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
                         >
                         Work With Us
                         <HugeiconsIcon icon={ArrowRight01Icon} className="ml-2 size-4 lg:size-6 transition-transform group-hover:translate-x-1" />
                     </Button>
+                    </Link>
                 </div>
             </div>
             <div className="col-span-1">
@@ -75,8 +87,8 @@ const page = () => {
                             </svg>
                     </div>
                     <div className="max-w-[350px] mt-[30px]">
-                        <h4 className='text-xl font-bold text-secondary font-lato text-center'>Creating Lifelong Partnerships</h4>
-                        <p className='text-sm text-muted-foreground font-lato mt-3 text-center'>Fostering trust and strong relationships for long-term success in real estate.</p>
+                        <h4 className='text-xl font-bold text-secondary font-lato text-center'>Building Futures Through Real Estate</h4>
+                        <p className='text-sm text-muted-foreground font-lato mt-3 text-center'>Creating trusted property opportunities that empower individuals, families, and investors to grow with confidence.</p>
                     </div>
                 </div>
                 <div className="flex flex-col items-center">
@@ -99,8 +111,8 @@ const page = () => {
                         </svg>
                     </div>
                     <div className="max-w-[350px] mt-[30px]">
-                        <h4 className='text-xl font-bold text-secondary font-lato text-center'>Creating Lifelong Partnerships</h4>
-                        <p className='text-sm text-muted-foreground font-lato mt-3 text-center'>Fostering trust and strong relationships for long-term success in real estate.</p>
+                        <h4 className='text-xl font-bold text-secondary font-lato text-center'>Excellence & Transparency</h4>
+                        <p className='text-sm text-muted-foreground font-lato mt-3 text-center'>Delivering professional real estate services with honesty, clarity, and a commitment to client satisfaction.</p>
                     </div>
                 </div>
                 <div className="flex flex-col items-center">
@@ -110,8 +122,8 @@ const page = () => {
                         </svg>
                     </div>
                     <div className="max-w-[350px] mt-[30px]">
-                        <h4 className='text-xl font-bold text-secondary font-lato text-center'>Creating Lifelong Partnerships</h4>
-                        <p className='text-sm text-muted-foreground font-lato mt-3 text-center'>Fostering trust and strong relationships for long-term success in real estate.</p>
+                        <h4 className='text-xl font-bold text-secondary font-lato text-center'>Smart Investment Growth</h4>
+                        <p className='text-sm text-muted-foreground font-lato mt-3 text-center'>Helping clients secure properties with long-term value in fast-developing and high-potential locations.</p>
                     </div>
                 </div>
             </div>
@@ -131,17 +143,20 @@ const page = () => {
                     Our Mission
                     </h2>
                     <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
-                       At RealPro, our mission is to be a trusted partner in every real estate journey. We are committed to providing expert guidance and optimal solutions to help clients realize their dreams of an ideal home or a rewarding investment opportunity.
+                       At Zeema Homes, our mission is to simplify the real estate experience by providing trusted guidance, verified properties, and reliable support for every client. We are committed to helping buyers, sellers, and investors make confident decisions with ease.
                     </p>
                     <p className='text-sm lg:text-base text-muted-foreground font-lato mt-3'>
-                        We prioritize our clients at every step and strive to create sustainable value for both the community and the real estate market. RealPro is not just about building properties – we build trust, peace of mind, and a prosperous future for all our clients.
+                        Through professionalism, transparency, and market expertise, we strive to create lasting relationships while delivering real value in every property transaction.
+                        We aim to make owning and investing in real estate a smooth, secure, and rewarding experience for everyone we serve.
                     </p>
+                    <Link href='/contact'>
                     <Button 
                         className="mt-5 w-fit bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
                         >
                         Work With Us
                         <HugeiconsIcon icon={ArrowRight01Icon} className="ml-2 size-4 lg:size-6 transition-transform group-hover:translate-x-1" />
                     </Button>
+                    </Link>
                 </div>
             </div>
         </div>

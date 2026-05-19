@@ -26,7 +26,7 @@ const page = () => {
                <h2 className="text-3xl md:text-4xl font-semibold text-secondary tracking-tight font-lato capitalize">
                 Connecting near or far?
                 </h2>
-                <p className='text-sm text-muted-foreground font-lato mt-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta justo eget risus consectetur, non venenatis elit blandit. Mauris vehicula, libero a iaculis fringilla, ipsum ipsum tincidunt velit, ut convallis velit ante tincidunt dui.</p>
+                <p className='text-sm text-muted-foreground font-lato mt-[30px]'>Whether you’re looking for your dream home in the city or investing in properties from anywhere in the world, we make the process seamless, transparent, and stress-free. Our team is committed to helping you find the right property, at the right price, with full support every step of the way.</p>
                 <div className="flex flex-col gap-6 mt-[30px]">
                     <p className='text-sm lg:text-base text-muted-foreground font-lato'>Address:<span className='font-medium'> Suite J266 Road 5, Ikota Shopping Complex, VGC, Ajah</span></p>
                     <p className='text-sm lg:text-base text-muted-foreground font-lato'>Mobile:<span className='font-medium'> (+234) 803-520-4747</span></p>

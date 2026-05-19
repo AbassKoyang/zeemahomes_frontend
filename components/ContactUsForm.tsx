@@ -17,6 +17,10 @@ const ContactUsForm = () => {
       e.preventDefault()
       setIsSubmitting(true)
       try{
+        if (!name || !email || !message) {
+          toast.error('Please fill in all fields!')
+          return
+        }
         await axios.post('http://localhost:3000/api/contact', {name, email, message})
         toast.success('Form submitted successfully!')
         setName('')

@@ -7,10 +7,14 @@ import {
 } from "@hugeicons/core-free-icons";
 import {HugeiconsIcon} from '@hugeicons/react'
 import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { SplitText } from "gsap/all";
+import { ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 
-const ExpertInProperties = () => {
-    const router = useRouter()
     const stats = [
         {
             icon: <svg xmlns="http://www.w3.org/2000/svg" className='size-[20px] lg:size-[30px]' viewBox="0 0 30 30" fill="none">
@@ -30,8 +34,8 @@ const ExpertInProperties = () => {
             <path d="M15.0273 0.937256C8.29727 0.937259 2.82062 6.41392 2.82061 13.1439C2.82061 14.7637 3.14371 16.3077 3.71924 17.7233C2.9394 19.2117 2.14131 20.6431 1.32962 22.0496C0.795861 22.9744 0.835205 24.0465 1.29478 24.8096C1.75434 25.5728 2.58629 26.064 3.51384 26.064C3.51812 26.0641 3.5224 26.0641 3.52668 26.064L5.33678 26.042L6.5215 27.887C7.02937 28.6755 7.89885 29.102 8.76807 29.079C9.6373 29.0561 10.5143 28.5634 11.0128 27.6999C11.0226 27.6813 12.3186 25.037 12.3186 25.037C13.191 25.2357 14.0956 25.3488 15.0273 25.3488C15.957 25.3488 16.858 25.2367 17.7287 25.0389C17.7287 25.0389 19.0302 27.6813 19.04 27.6999C19.5385 28.5634 20.4155 29.0561 21.2847 29.079C22.1539 29.102 23.0234 28.6755 23.5313 27.887L24.716 26.042L26.5261 26.064C26.5285 26.0641 26.531 26.0641 26.5334 26.064C27.461 26.064 28.2911 25.5728 28.7507 24.8096C29.2102 24.0465 29.2569 22.9744 28.7231 22.0496C27.9115 20.6431 27.1134 19.2117 26.3335 17.7233C26.9091 16.3077 27.2322 14.7637 27.2322 13.144C27.2322 6.41392 21.7573 0.937256 15.0273 0.937256ZM15.0273 2.81521C20.7424 2.81521 25.3542 7.42884 25.3542 13.1439C25.3542 18.8591 20.7424 23.4709 15.0273 23.4709C9.3122 23.4709 4.69857 18.8591 4.69857 13.1439C4.69857 7.42884 9.3122 2.81521 15.0273 2.81521ZM4.77192 19.7388C6.13902 21.8565 8.13864 23.5239 10.5066 24.4722L9.38428 26.7628C9.18623 27.1058 8.95393 27.2004 8.71856 27.2066C8.48318 27.2128 8.2529 27.1124 8.09502 26.8673L6.63337 24.5877C6.45763 24.3145 6.15312 24.1515 5.82827 24.1567L3.51384 24.1843C3.26721 24.1843 3.02813 24.0452 2.90314 23.8376C2.77814 23.6301 2.72518 23.3959 2.95816 22.9922C3.5683 21.935 4.77192 19.7388 4.77192 19.7388ZM25.2809 19.7388C25.8795 20.8473 26.4845 21.935 27.0946 22.9922C27.3276 23.3959 27.2673 23.6301 27.1423 23.8376C27.0173 24.0452 26.7801 24.1843 26.5334 24.1843L24.2245 24.1567C23.9003 24.152 23.5966 24.315 23.4212 24.5877L21.9504 26.8673C21.7925 27.1124 21.5696 27.2128 21.3342 27.2066C21.0988 27.2004 20.8665 27.1058 20.6685 26.7628L19.5406 24.474C21.906 23.5437 23.9507 21.751 25.2809 19.7388Z" fill="#254B86"/>
             <path d="M15.0273 6.59302C13.6682 6.59302 13.113 7.92565 12.9605 8.2564C12.6555 8.91791 12.3968 9.43712 12.2269 9.56033C12.057 9.68354 11.4796 9.76571 10.7561 9.85009C10.3943 9.89229 8.94288 10.0366 8.53153 11.2989C8.12017 12.5612 9.20673 13.533 9.47417 13.7802C10.009 14.2747 10.4218 14.6828 10.4865 14.8824C10.5512 15.0821 10.4556 15.6592 10.3123 16.3734C10.2406 16.7305 9.92503 18.1508 11.0055 18.9373C12.086 19.7237 13.3359 18.9832 13.6537 18.8052C14.2893 18.4493 14.8101 18.1815 15.02 18.1817C15.2299 18.1819 15.744 18.4482 16.3789 18.8052C16.6964 18.9837 17.9551 19.726 19.0327 18.9446C20.1102 18.1632 19.7969 16.738 19.7259 16.3807C19.5838 15.6663 19.4885 15.0966 19.5535 14.8971C19.6185 14.6975 20.0356 14.2884 20.5713 13.7949C20.8392 13.5481 21.9383 12.6232 21.514 11.3136C21.0897 10.0039 19.6584 9.90025 19.2967 9.85743C18.5734 9.77178 17.9956 9.68934 17.8259 9.56583C17.6562 9.44232 17.3962 8.91843 17.0923 8.2564C16.9404 7.92538 16.3864 6.59302 15.0273 6.59302ZM15.3868 9.03949C15.6391 9.58932 15.8789 10.4694 16.7237 11.0843C17.5685 11.6992 18.4741 11.6514 19.0748 11.7225C19.6915 11.7955 19.788 11.9245 19.2967 12.4158C18.8518 12.8257 18.0947 13.3204 17.7709 14.3139C17.4472 15.3074 17.7648 16.1542 17.8828 16.7475C18.0134 17.4044 17.9645 17.5532 17.2996 17.1693C16.7757 16.8669 16.0649 16.3046 15.02 16.3037C13.9751 16.3028 13.2625 16.8669 12.7386 17.1693C12.1831 17.49 12.013 17.4587 12.1572 16.7402C12.2763 16.1471 12.5966 15.3024 12.2746 14.3084C11.9526 13.3144 11.1948 12.8191 10.7506 12.4084C10.3281 12.0178 10.2229 11.8024 10.9707 11.7152C11.5716 11.6451 12.4832 11.6904 13.3291 11.077C14.175 10.4636 14.4127 9.58889 14.666 9.03949C14.9056 8.51982 15.147 8.51699 15.3868 9.03949Z" fill="#254B86"/>
             </svg>,
-            title: '350+',
-            description: 'Expert Researchers'
+            title: '300+',
+            description: 'Successful Transactions'
         },
         {
             icon: <svg xmlns="http://www.w3.org/2000/svg" className='size-[20px] lg:size-[30px]' viewBox="0 0 30 30" fill="none">
@@ -45,8 +49,8 @@ const ExpertInProperties = () => {
                 </clipPath>
             </defs>
             </svg>,
-            title: '50+',
-            description: 'Real Estate Agents'
+            title: '300+',
+            description: 'Happy Clients'
         },
         {
             icon: <svg xmlns="http://www.w3.org/2000/svg" className='size-[20px] lg:size-[30px]' viewBox="0 0 30 30" fill="none">
@@ -60,26 +64,122 @@ const ExpertInProperties = () => {
             </defs>
             </svg>,
             title: '100+',
-            description: 'Listing for Sale'
+            description: 'Verified Properties'
         },
     ]
+
+const ExpertInProperties = () => {
+    const router = useRouter()
+
+      const container = useRef<HTMLDivElement>(null);
+    
+    useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 90%',
+        toggleActions: 'play none none reverse',
+      },
+    });    
+       // Split heading into WORDS
+      const split = SplitText.create('.heading', {
+        type: 'words',
+      });
+    
+      // Animate words
+      tl.from(split.words, {
+        y: 100,
+        autoAlpha: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+    
+      tl.fromTo(
+        '.desc',
+        {
+          y: 50,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.2,
+          ease: 'power2.inOut',
+        }
+      );
+
+    tl.fromTo(
+        '.card',
+        {
+          scale: 0,
+          autoAlpha: 0,
+        },
+        {
+          scale: 1,
+          autoAlpha: 1,
+          duration: 0.6,
+          stagger: {
+            each: 0.15,
+          },
+          ease: 'power3.out',
+        }
+      );
+    
+      tl.fromTo(
+        '.button',
+        {
+          y: 100,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.3,
+          ease: 'power3.out',
+        }
+      );
+    
+    }, { scope: container });
+
+    useGSAP(() => {
+        gsap.fromTo(
+        '.img',
+        {
+          y: 500,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1,
+          ease: 'power2.inOut',
+           scrollTrigger: {
+                trigger: container.current,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse',
+            }
+        }
+      );
+    }, { scope: container })
+
   return (
-    <section className="w-full py-20">
+    <section ref={container} className="w-full py-20">
         <div className='bg-[#F4FBFF] border border-[#E0E0E0] rounded-[10px] h-[1000px] lg:h-fit grid grid-rows-2 lg:grid-rows-1 grid-cols-1 lg:grid-cols-2'>
             <div className="row-span-1 col-span-1 p-9 lg:py-15 lg:pl-15">
                 <div className="text-left mb-[30px] space-y-4 font-lato">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-secondary tracking-tight capitalize">
-                        The experts in property
+                    <h2 className="heading text-3xl md:text-4xl font-semibold text-secondary tracking-tight capitalize">
+                        Trusted Real Estate Experts
                     </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
-                        We are a leading company in the real estate sector, specializing in providing a wide range of services and solutions to meet the needs of buying, renting, and managing real estate assets. With experience and dedication, we are 
+                    <p className="desc text-muted-foreground max-w-2xl mx-auto font-normal">
+                       At Zeema Homes, we help individuals, families, and investors make confident property decisions through trusted guidance, verified listings, and personalized support. Our team is committed to delivering a smooth and transparent real estate experience from start to finish. 
                     </p>
                 </div>
 
                 <div className="w-full gap-4 lg:gap-6 flex flex-wrap mb-[30px]">
                     {
                         stats.map((stat) => (
-                            <div className='w-[calc(50%-16px)] lg:w-fit flex items-center gap-2 lg:gap-3 bg-white border border-[#E0E0E0] p-2 lg:p-3 rounded-[10px]'>
+                            <div className='card w-[calc(50%-16px)] lg:w-fit flex items-center gap-2 lg:gap-3 bg-white border border-[#E0E0E0] p-2 lg:p-3 rounded-[10px]'>
                                 <div className="rounded-full bg-[#F0F8FE] p-[6px] lg:p-[10px]">
                                     {stat.icon}
                                 </div>
@@ -95,7 +195,7 @@ const ExpertInProperties = () => {
                 </div>
                 <Button
                 onClick={() => router.push('/about')}  
-                    className="bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
+                    className="button bg-primary hover:bg-primary/90 text-white h-12 lg:h-16 px-5 lg:px-10 rounded-[6px] text-sm lg:text-lg font-semibold group transition-all shadow-lg shadow-primary/20 font-lato"
                     >
                     Learn About Us
                     <HugeiconsIcon icon={ArrowRight01Icon} className="ml-2 size-4 lg:size-6 transition-transform group-hover:translate-x-1" />
@@ -103,7 +203,7 @@ const ExpertInProperties = () => {
             </div>
 
             <div className="row-span-1 col-span-1 relative">
-                <img src='/experts-image.png' className='absolute bottom-0 right-0 w-full' />
+                <img src='/experts-image.png' className='absolute bottom-0 right-0 w-full img' />
             </div>
         </div>
     </section>
