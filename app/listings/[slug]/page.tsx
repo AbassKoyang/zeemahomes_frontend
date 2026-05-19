@@ -1,10 +1,10 @@
 import React from 'react'
 import ListingClient from './ListingClient'
 
-const page = () => {
+const ListingPage = () => {
   return (
     <ListingClient />
   )
 }
 
-export default page
+export default ListingPage

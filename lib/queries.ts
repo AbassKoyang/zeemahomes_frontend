@@ -57,6 +57,7 @@ export const usePropertyDetails = (slug: string) => {
   return useQuery<Property>({
     queryKey: ["propertyDetails", slug],
     queryFn: () => fetchPropertyDetails(slug),
+    enabled: !!slug,
   });
 };
 
@@ -64,5 +65,6 @@ export const useBlogDetails = (slug: string) => {
   return useQuery<BlogPost>({
     queryKey: ["blogDetails", slug],
     queryFn: () => fetchBlogDetails(slug),
+    enabled: !!slug,
   });
 };
